@@ -14,7 +14,7 @@ interface SearchParams {
 export default async function Page({ searchParams }: { searchParams?: SearchParams }) {
   const query = searchParams?.query?.toLowerCase() || "";
   const ms = parseInt(searchParams?.ms || "0");
-  const max = parseInt(searchParams?.max || "100000");
+  const max = parseInt(searchParams?.max || "10000000");
   const jobType = searchParams?.type?.toLowerCase() || "";
   const page = parseInt(searchParams?.page || "1");
 
