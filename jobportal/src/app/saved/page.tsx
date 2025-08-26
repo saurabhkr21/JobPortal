@@ -1,8 +1,8 @@
 "use client";
 
-import { useJobContext } from "../../context";
-import JobCard from "../../components/JobCard";
 import Header from "@/components/card/Header";
+import JobCard from "../../components/JobCard";
+import { useJobContext } from "../../context";
 
 export default function SavedJobsPage() {
   const { savedJobs, isLoading, clearAllSavedJobs } = useJobContext();
@@ -32,7 +32,7 @@ export default function SavedJobsPage() {
 
   return (
     <div>
-      <Header/>
+      <Header />
       <div className="flex justify-between items-center  p-6">
         <h1 className="text-2xl font-bold">Saved Jobs ({savedJobs.length})</h1>
         {savedJobs.length > 0 && (
@@ -46,14 +46,16 @@ export default function SavedJobsPage() {
       </div>
       {savedJobs.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
-          {savedJobs.map((item) => (
-            <div
-              key={item.id}
-              className="rounded-xl shadow hover:shadow-lg transition"
-            >
-              <JobCard item={item} />
-            </div>
-          ))}
+          {savedJobs
+            .filter((item) => item && item.id)
+            .map((item) => (
+              <div
+                key={item.id}
+                className="rounded-xl shadow hover:shadow-lg transition"
+              >
+                <JobCard item={item} />
+              </div>
+            ))}
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center py-16 text-center">
