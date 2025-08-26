@@ -2,7 +2,6 @@
 import prismaClient from "@/services/prisma";
 import JobCard from "@/components/JobCard";
 import SideBarSort from "../../../components/card/SideBarSort";
-import { JobWithDetails } from "@/lib/type";
 
 interface SearchParams {
   query?: string;
@@ -54,7 +53,7 @@ export default async function Page({ searchParams }: { searchParams?: SearchPara
         <SideBarSort />
       </div>
       <div className="flex-1  p-5">
-        <div className="grid grid-cols-1 gap-7 lg:grid-cols-2 p-3 shadow-2xl  hover:onfocus:shadow-2xl">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 p-3 shadow-2xl  hover:onfocus:shadow-2xl">
           {jobs.length > 0 ? (
             jobs.map((item) => <JobCard key={item.id} item={item} />)
           ) : (
