@@ -1,8 +1,8 @@
 "use client";
 
-import Header from "@/components/card/Header";
-import JobCard from "../../components/JobCard";
 import { useJobContext } from "../../context";
+import JobCard from "../../components/JobCard";
+import Header from "@/components/card/Header";
 
 export default function SavedJobsPage() {
   const { savedJobs, isLoading, clearAllSavedJobs } = useJobContext();
@@ -12,6 +12,7 @@ export default function SavedJobsPage() {
       <div className="p-6">
         <h1 className="text-2xl font-bold mb-6">Saved Jobs</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {/* Loading skeleton */}
           {[...Array(6)].map((_, idx) => (
             <div
               key={idx}
@@ -31,7 +32,7 @@ export default function SavedJobsPage() {
 
   return (
     <div>
-      <Header />
+      <Header/>
       <div className="flex justify-between items-center  p-6">
         <h1 className="text-2xl font-bold">Saved Jobs ({savedJobs.length})</h1>
         {savedJobs.length > 0 && (
@@ -45,16 +46,14 @@ export default function SavedJobsPage() {
       </div>
       {savedJobs.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
-          {savedJobs
-            .filter((item) => item && item.id)
-            .map((item) => (
-              <div
-                key={item.id}
-                className="rounded-xl shadow hover:shadow-lg transition"
-              >
-                <JobCard item={item} />
-              </div>
-            ))}
+          {savedJobs.map((item) => (
+            <div
+              key={item.id}
+              className="rounded-xl shadow hover:shadow-lg transition"
+            >
+              <JobCard item={item} />
+            </div>
+          ))}
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center py-16 text-center">
