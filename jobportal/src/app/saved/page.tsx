@@ -47,7 +47,13 @@ export default function SavedJobsPage() {
       {savedJobs.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
           {savedJobs
-            .filter((item) => item && item.id)
+            .filter(
+              (item) =>
+                item &&
+                typeof item === "object" &&
+                "id" in item &&
+                item.id
+            )
             .map((item) => (
               <div
                 key={item.id}
