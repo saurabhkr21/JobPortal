@@ -13,7 +13,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className=" items-center space-x-2 hidden md:flex">
             <Briefcase className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold">JobPortal</span>
+            <span className="text-2xl font-bold">Next Hire</span>
           </Link>
           <nav className="hidden md:flex space-x-8 ">
             <Link

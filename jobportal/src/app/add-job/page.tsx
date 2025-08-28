@@ -88,7 +88,7 @@ export default function AddJob() {
   }
 
   return (
-    <div className="flex items-center justify-center bg-opacity-50 backdrop-blur-sm p-4">
+    <div className="flex flex-col items-center justify-center bg-opacity-50 backdrop-blur-sm p-4">
         <div className="flex items-center justify-between p-4 border-b backdrop-blur-sm">
           <div>
             <h2 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
