@@ -98,7 +98,7 @@ export default function DialogCard() {
           >
             Add Job
           </DropdownMenu.Item>
-          <div className="border-b border-gray-200 dark:border-slate-700 my-1" />
+        <div className="border-b border-gray-200 dark:border-slate-700 my-1" />
           <DropdownMenu.Item
             className="px-3 hidden py-2 rounded hover:bg-blue-50 dark:hover:bg-slate-700 cursor-pointer"
             onClick={() => {
