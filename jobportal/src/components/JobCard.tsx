@@ -15,7 +15,6 @@ export default function JobCard({ item }: { item: Job }) {
     setIsNavigating(true);
     router.push(`/jobs/${encodeURIComponent(item.id)}`);
   }
-
   if (!item || !item.id) {
     return (
       <div className="flex gap-3 border rounded-xl p-4">

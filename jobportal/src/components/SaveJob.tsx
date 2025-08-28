@@ -2,15 +2,14 @@
 
 import { useState } from "react";
 import { useJobContext } from "../context";
-import { Bookmark, Loader } from "lucide-react";
+import {  Bookmark, Loader } from "lucide-react";
 import { Job } from "@/lib/type";
 
-export default function SaveJob({ item }:{item:Job}) {
+export default function SaveJob({ item }: { item: Job }) {
   const { savedJobs, saveJob, removeJob, isLoading } = useJobContext();
   const [isProcessing, setIsProcessing] = useState(false);
 
   const isSaved = savedJobs.some((job) => job.id === item?.id);
-
   async function handleClick() {
     if (!item || !item.id) {
       console.error("Invalid job item provided to SaveJob component");
@@ -90,7 +89,16 @@ export default function SaveJob({ item }:{item:Job}) {
             : "bg-slate-400 text-white dark:bg-zinc-700"
         }`}
       >
-        {isProcessing ? "Processing..." : isSaved ? <Bookmark className="text-blue-400 rounded shadow-amber-400" size={18} /> : <Bookmark size={16} />}
+        {isProcessing ? (
+          "Processing..."
+        ) : isSaved ? (
+          <Bookmark
+            className="text-blue-400 rounded shadow-amber-400"
+            size={18}
+          />
+        ) : (
+          <Bookmark size={16} />
+        )}
       </button>
     </div>
   );
