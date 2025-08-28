@@ -2,15 +2,10 @@
 
 import { useState } from "react";
 import { useJobContext } from "../context";
-import { BookCheck, Bookmark, Loader } from "lucide-react";
-type SaveJobProps = {
-  item: {
-    id: string;
-    title?: string;
-  };
-};
+import { Bookmark, Loader } from "lucide-react";
+import { Job } from "@/lib/type";
 
-export default function SaveJob({ item }: SaveJobProps) {
+export default function SaveJob({ item }:{item:Job}) {
   const { savedJobs, saveJob, removeJob, isLoading } = useJobContext();
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -35,16 +30,16 @@ export default function SaveJob({ item }: SaveJobProps) {
       if (!isSaved) {
         success = saveJob(item);
         if (success) {
-          console.log("Job saved:", item.title);
+          console.log("Job saved:", item.job_title);
         } else {
-          console.error("Failed to save job:", item.title);
+          console.error("Failed to save job:", item.job_title);
         }
       } else {
         success = removeJob(item.id);
         if (success) {
-          console.log("Job removed from saved:", item.title);
+          console.log("Job removed from saved:", item.job_title);
         } else {
-          console.error("Failed to remove job:", item.title);
+          console.error("Failed to remove job:", item.job_title);
         }
       }
     } catch (error) {

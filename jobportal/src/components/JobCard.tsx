@@ -103,12 +103,9 @@ export default function JobCard({ item }: { item: Job }) {
               {isNavigating ? "Loading..." : <InfoIcon size={14} />}
             </button>
             <SaveJob
-              key={item.id ?? "unknown"}
-              item={{
-                id: item.id ?? "unknown",
-                title: item.job_title ?? undefined,
-              }}
-            />
+              key={item.id}
+              item={item}
+             />
           </div>
           <Link
             href={"/company/" + item.company.id}
