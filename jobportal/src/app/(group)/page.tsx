@@ -74,7 +74,7 @@ export default function page() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold  mb-4">
-              Why Choose JobHub?
+              Why Choose Next Hire?
             </h2>
             <p className="text-xl  max-w-2xl mx-auto">
               We connect talented professionals with amazing opportunities
@@ -132,7 +132,7 @@ export default function page() {
           </h2>
           <p className="text-xl text-blue-100 mb-12">
             Join thousands of professionals who have found their dream jobs
-            through JobHub.
+            through Next Hire.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -157,7 +157,7 @@ export default function page() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Briefcase className="h-8 w-8 text-blue-400" />
-                <span className="text-2xl font-bold text-white">JobHub</span>
+                <span className="text-2xl font-bold text-white">Next Hire</span>
               </div>
               <p className="text-gray-400 leading-relaxed">
                 Connecting talent with opportunity. Your career journey starts
@@ -244,7 +244,7 @@ export default function page() {
 
           <div className="border-t border-gray-800 pt-8 text-center">
             <p className="text-gray-400">
-              © 2025 JobHub. All rights reserved. Built with ❤️ for job seekers
+              © 2025 Next Hire. All rights reserved. Built with ❤️ for job seekers
               everywhere.
             </p>
           </div>
