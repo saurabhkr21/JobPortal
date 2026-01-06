@@ -74,7 +74,7 @@ export default async function page() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {applications.map((application) =>
           application.job ? (
-            <div key={application.id} className="relative flex gap-0.5">
+            <div key={application.id} className="relative flex gap-0.5 shadow-md">
               <JobCard key={application.id} item={application.job} />
               <ApplyDeleteBtn job={application.job}  />
             </div>
