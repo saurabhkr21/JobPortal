@@ -1,5 +1,6 @@
 
 import prismaClient from "@/services/prisma";
+import { Suspense } from "react";
 import JobCard from "@/components/JobCard";
 import SideBarSort from "../../../components/card/SideBarSort";
 
@@ -11,7 +12,10 @@ interface SearchParams {
   page?: string;
 }
 
-export default async function Page({ searchParams }: { searchParams?: SearchParams }) {
+export default async function Page(props: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const searchParams = await props.searchParams;
   const query = searchParams?.query?.toLowerCase() || "";
   const ms = parseInt(searchParams?.ms || "0");
   const max = parseInt(searchParams?.max || "10000000");
@@ -50,7 +54,9 @@ export default async function Page({ searchParams }: { searchParams?: SearchPara
         className="hidden sm:flex top-10 w-xs
       left-0 h-screen z-40 mt-8 p-2"
       >
-        <SideBarSort />
+        <Suspense fallback={<div>Loading...</div>}>
+          <SideBarSort />
+        </Suspense>
       </div>
       <div className="flex-1  p-5">
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 p-3 shadow-2xl  hover:onfocus:shadow-2xl">

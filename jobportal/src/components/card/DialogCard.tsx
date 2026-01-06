@@ -1,4 +1,3 @@
-"use client";
 import { Avatar, Box, DropdownMenu, Flex, Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 export default function DialogCard() {
@@ -90,13 +89,13 @@ export default function DialogCard() {
         </DropdownMenu.Item>
         <div className="border-b border-gray-200 dark:border-slate-700 my-1" />
         <DropdownMenu.Item
-            className="px-3 hidden py-2 rounded hover:bg-blue-50 dark:hover:bg-slate-700 cursor-pointer"
-            onClick={() => {
-              window.location.href = "/applied-jobs";
-            }}
-          >
-            Applied Jobs
-          </DropdownMenu.Item>
+          className="px-3 hidden py-2 rounded hover:bg-blue-50 dark:hover:bg-slate-700 cursor-pointer"
+          onClick={() => {
+            window.location.href = "/applied-jobs";
+          }}
+        >
+          Applied Jobs
+        </DropdownMenu.Item>
         <div className="border-b border-gray-200 dark:border-slate-700 my-1" />
         <div className="flex flex-col sm:hidden">
           <DropdownMenu.Item
@@ -107,7 +106,7 @@ export default function DialogCard() {
           >
             Add Job
           </DropdownMenu.Item>
-        <div className="border-b border-gray-200 dark:border-slate-700 my-1" />
+          <div className="border-b border-gray-200 dark:border-slate-700 my-1" />
           <DropdownMenu.Item
             className="px-3 hidden py-2 rounded hover:bg-blue-50 dark:hover:bg-slate-700 cursor-pointer"
             onClick={() => {
