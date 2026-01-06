@@ -14,6 +14,14 @@ export default async function page() {
         <p className="text-gray-600 dark:text-gray-400">
           You need to be logged in to see your applied jobs.
         </p>
+        <p className="p-2">
+          <Link
+          href="/login"
+          className="px-4 py-2 mt-10 bg-blue-600 text-white rounded-md"
+        >
+          Log in
+        </Link>
+        </p>
       </div>
     );
   }
