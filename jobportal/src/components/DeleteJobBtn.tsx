@@ -12,7 +12,8 @@ export default function DeleteJobBtn({ job, jobId }: { job: any; jobId: string }
   async function handleDelete() {
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job/${jobId}`, {
+      const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "").replace(/[;"'/]+$/, "");
+      const res = await fetch(`${baseUrl}/api/job/${jobId}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -68,11 +69,10 @@ export default function DeleteJobBtn({ job, jobId }: { job: any; jobId: string }
               <button
                 onClick={handleDelete}
                 disabled={loading}
-                className={`px-4 py-2 text-sm rounded text-white ${
-                  loading
+                className={`px-4 py-2 text-sm rounded text-white ${loading
                     ? "bg-red-300 cursor-not-allowed"
                     : "bg-red-600 hover:bg-red-700"
-                }`}
+                  }`}
               >
                 {loading ? "Deleting..." : "Delete"}
               </button>

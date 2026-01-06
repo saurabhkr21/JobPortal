@@ -2,12 +2,13 @@ import { getUserFromCookies } from "@/helper";
 import prismaClient from "@/services/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
+export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const user = await getUserFromCookies();
-  const job_id = params.id;
+  const { id: job_id } = await params;
+  const body = await req.json();
 
   if (!user) {
     return NextResponse.json({
@@ -21,6 +22,7 @@ export async function GET(
   const appToSave = {
     user_id: user?.id,
     job_id: job_id,
+    resumeUrl: body.resumeUrl,
   };
 
   try {
@@ -44,10 +46,10 @@ export async function GET(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const user = await getUserFromCookies();
-  const job_id = params.id;
+  const { id: job_id } = await params;
 
   if (!user) {
     return NextResponse.json({

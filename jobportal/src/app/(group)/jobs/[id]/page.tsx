@@ -7,11 +7,12 @@ import { notFound } from "next/navigation";
 export default async function JobDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const user = await getUserFromCookies();
-  const { id } = params;
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/job/` + id);
+  const { id } = await params;
+  const baseUrl = (process.env.NEXT_PUBLIC_API_URL || "").replace(/^['"]+|['";]+$/g, "");
+  const res = await fetch(`${baseUrl}/api/job/` + id);
   console.log("Fetching job details for ID:", id);
   const data = await res.json();
   console.log("Job details data:", data);
@@ -45,7 +46,7 @@ export default async function JobDetailPage({
         )}
       </h1>
 
-      <Detail job={job} />
+      <Detail job={job} isApplied={userHasApplied} />
       <div className="flex flex-col bg-amber-500 text-black gap-4 px-10"></div>
     </div>
   );

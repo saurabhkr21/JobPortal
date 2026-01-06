@@ -17,7 +17,7 @@ import JobApplyBtn from "./JobApplyBtn";
 // import JobApplyBtn from "./jobApplyBtn";
 // import SaveJob from "./SaveJob";
 
-export default function Detail({ job }: { job: Job }) {
+export default function Detail({ job, isApplied = false }: { job: Job; isApplied?: boolean }) {
   const router = useRouter();
   const { userData } = useUserContext();
 
@@ -35,7 +35,7 @@ export default function Detail({ job }: { job: Job }) {
               src={job.employer_logo}
               alt={`${job.employer_name} Logo`}
               className="h-20 w-20 rounded-2xl object-contain border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800"
-              
+
             />
           )}
           <div>
@@ -64,7 +64,7 @@ export default function Detail({ job }: { job: Job }) {
         </div>
       </div>
       <div className="flex gap-2 flex-wrap items-center">
-        <JobApplyBtn job={{ ...job, id: job.id ?? "" }} />
+        <JobApplyBtn job={{ ...job, id: job.id ?? "" }} isApplied={isApplied} />
         {/* Pass a CompanyWithDetails object here instead of job, or update ViewApplicants to accept Job */}
         {/* Example fix if you have companyWithDetails available: */}
         {/* <ViewApplicants job={companyWithDetails} /> */}
@@ -76,7 +76,7 @@ export default function Detail({ job }: { job: Job }) {
       <div className="flex flex-col md:flex-row justify-between gap-6 mb-8">
         <InfoItem
           label="Employment Type"
-          value={job.employment_type ||""}
+          value={job.employment_type || ""}
           color="blue"
           icon={<BadgeInfo size={16} />}
         />

@@ -4,8 +4,8 @@ import prismaClient from "@/services/prisma";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
-  const id = params.id;
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   console.log("Fetching job details show for ID in routes:", id);
   try {
     const job = await prismaClient.job.findUnique({

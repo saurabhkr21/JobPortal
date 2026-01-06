@@ -32,15 +32,16 @@ model job {
   updatedAt       DateTime      @updatedAt
 }
 
-// model Resume {
-//   id             String  @id @default(auto()) @map("_id") @db.ObjectId
-//   qualification  String?
-//   education      String?
-//   cgpa           String?
-//   graduationYear String?
-//   ownerId        String  @unique @db.ObjectId
-//   owner          user    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-// }
+model Resume {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  qualification  String?
+  education      String?
+  cgpa           String?
+  graduationYear String?
+  ownerId        String  @unique @db.ObjectId
+  owner          user    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+}
+
 enum Role {
   EMPLOYER
   EMPLOYEE
@@ -56,6 +57,7 @@ model user {
   // Resume   Resume?
   reviews      Review[]
   applications application[]
+  resume       Resume?
 }
 
 model Review {
@@ -77,13 +79,13 @@ model company {
 }
 
 model application {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  user_id String @db.ObjectId
-  job_id  String @db.ObjectId
-  user    user   @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  job     job?    @relation(fields: [job_id], references: [id], onDelete: Cascade)
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id   String   @db.ObjectId
+  job_id    String   @db.ObjectId
+  user      user     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  job       job?     @relation(fields: [job_id], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
+  resumeUrl String?
+
   @@unique([user_id, job_id])
 }
-
- 
