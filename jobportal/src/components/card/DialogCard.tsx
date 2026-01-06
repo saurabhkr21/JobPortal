@@ -4,6 +4,7 @@ export default function DialogCard() {
   type User = {
     name?: string;
     email?: string;
+    image?: string;
     role?: string;
     company: {
       id: string;
@@ -50,7 +51,7 @@ export default function DialogCard() {
             className="px-2 py-1 rounded-lg hover:bg-blue-100 dark:hover:bg-slate-700 transition-colors"
           >
             <Avatar
-              src={""}
+              src={user?.image || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"}
               alt={user?.name || "User Avatar"}
               size="2"
               className="border border-gray-300 dark:border-slate-700"

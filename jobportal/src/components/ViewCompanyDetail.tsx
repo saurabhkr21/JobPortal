@@ -17,13 +17,15 @@ export default function ViewCompanyDetail({
       {/* Header */}
       <div className="flex flex-col md:flex-row items-start justify-between mb-8 gap-6">
         <div className="flex flex-col md:flex-row items-center gap-6">
-          {company.image_url && (
-            <img
-              src={company.image_url}
-              alt={`${company.name} Logo`}
-              className="h-20 w-20 rounded-2xl object-contain border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800"
-            />
-          )}
+          <img
+            src={company.image_url || "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&h=100&fit=crop"}
+            alt={`${company.name} Logo`}
+            className="h-20 w-20 rounded-2xl object-cover border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800"
+            onError={(e) => {
+              e.currentTarget.src = "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&h=100&fit=crop";
+              e.currentTarget.onerror = null;
+            }}
+          />
           <div>
             <h1 className="text-4xl font-extrabold text-zinc-800 dark:text-zinc-100 mb-2">
               {company.name}

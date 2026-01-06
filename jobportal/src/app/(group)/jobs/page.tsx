@@ -49,7 +49,7 @@ export default async function Page(props: {
     );
   }
   return (
-    <div className="flex ">
+    <div className="flex min-h-screen bg-background text-foreground">
       <div
         className="hidden sm:flex top-10 w-xs
       left-0 h-screen z-40 mt-8 p-2"

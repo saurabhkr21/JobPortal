@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { JobProvider } from "../context";
 import "./globals.css";
 import UserContextProvider from "@/contexts/UserContextProvider";
+import Chatbot from "@/components/Chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +29,14 @@ export default function RootLayout({
       >
 
         <ThemeProvider attribute="class" >
-        <UserContextProvider>
-          <JobProvider>
-            <Theme>{children}</Theme>
-          </JobProvider>
-        </UserContextProvider>
+          <UserContextProvider>
+            <JobProvider>
+              <Theme>
+                {children}
+                <Chatbot />
+              </Theme>
+            </JobProvider>
+          </UserContextProvider>
         </ThemeProvider>
       </body>
     </html>

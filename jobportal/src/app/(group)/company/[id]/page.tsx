@@ -5,12 +5,14 @@ import { Job } from "@/lib/type";
 import { Box, Tabs } from "@radix-ui/themes";
 import { notFound } from "next/navigation";
 
-export default async function page({ params }: { params: { id: string } }) {
+export default async function page(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const id = params.id;
   if (!id) {
     notFound();
   }
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/company/${id}`);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/["';]/g, "");
+  const res = await fetch(`${apiUrl}/api/company/${id}`);
   const data = await res.json();
   const company = data.data;
   if (!company) {

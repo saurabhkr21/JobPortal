@@ -4,9 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
   req: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const id = context.params.id;
+  const params = await context.params;
+  const id = params.id;
   try {
     const company = await prismaClient.company.findUnique({
       where: {
@@ -46,9 +47,10 @@ export async function GET(
 
 export async function DELETE(
   req: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const id = context.params.id;
+  const params = await context.params;
+  const id = params.id;
   console.log("Deleting company with ID:", id);
   const user = await getUserFromCookies();
 

@@ -31,7 +31,7 @@ export default function JobCard({ item }: { item: Job }) {
   }
 
   return (
-    <div className="flex h-[30vh] gap-4 border rounded-xl p-4 hover:shadow transition-shadow">
+    <div className="flex h-[30vh] gap-4 border rounded-xl p-4 hover:shadow transition-shadow bg-white dark:bg-zinc-900/50 dark:border-zinc-800">
       {/* Logo */}
       {item.employer_logo ? (
         <img
@@ -39,12 +39,20 @@ export default function JobCard({ item }: { item: Job }) {
           alt={`${item.job_title || "Company"} logo`}
           width={40}
           height={40}
-          className="h-12 w-12 rounded-xl object-contain"
+          className="h-12 w-12 rounded-xl object-contain bg-white"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&h=100&fit=crop";
+            e.currentTarget.onerror = null; // Prevent infinite loop
+          }}
         />
       ) : (
-        <div className="h-12 w-12 rounded-xl flex items-center justify-center text-xs text-gray-600 dark:text-gray-200">
-          No Logo
-        </div>
+        <img
+          src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=100&h=100&fit=crop"
+          alt="Default Company Logo"
+          width={40}
+          height={40}
+          className="h-12 w-12 rounded-xl object-cover"
+        />
       )}
 
       {/* Info */}
@@ -91,11 +99,10 @@ export default function JobCard({ item }: { item: Job }) {
         <div className="flex justify-between items-center-safe gap-2 mt-auto">
           <div className="flex gap-2">
             <button
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors border ${
-                isNavigating
-                  ? "text-gray-500 cursor-not-allowed"
-                  : "text-blue-600 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-400"
-              }`}
+              className={`px-3 py-1 rounded text-sm font-medium transition-colors border ${isNavigating
+                ? "text-gray-500 cursor-not-allowed"
+                : "text-blue-600 hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-400"
+                }`}
               onClick={handleDetailClick}
               disabled={isNavigating}
             >
@@ -104,7 +111,7 @@ export default function JobCard({ item }: { item: Job }) {
             <SaveJob
               key={item.id}
               item={item}
-             />
+            />
           </div>
           <Link
             href={"/company/" + item.company.id}

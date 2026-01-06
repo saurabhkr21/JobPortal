@@ -5,7 +5,7 @@ import { DeleteIcon, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Application, CompanyWithDetails, Job } from "@/lib/type";
 
-export default function ViewApplicants({ job }:{ job: CompanyWithDetails }) {
+export default function ViewApplicants({ job }: { job: CompanyWithDetails }) {
   const { userData } = useUserContext();
   const [applicants, setApplicants] = useState<Application[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +49,7 @@ export default function ViewApplicants({ job }:{ job: CompanyWithDetails }) {
 
       {open && (
         <div
-          className="fixed z-50 flex items-center bg-opacity-60 dark:bg-opacity-80"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 dark:bg-opacity-80"
           onClick={() => setOpen(false)}
         >
           <div
@@ -100,11 +100,10 @@ export default function ViewApplicants({ job }:{ job: CompanyWithDetails }) {
                     <p className="text-sm">
                       <strong>Status:</strong>{" "}
                       <span
-                        className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${
-                          app.status === "APPLIED"
+                        className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${app.status === "APPLIED"
                             ? "bg-blue-100 text-blue-800"
                             : "bg-green-100 text-green-800"
-                        }`}
+                          }`}
                       >
                         {app.status}
                       </span>
